@@ -8,6 +8,7 @@ import {Button} from "@/components/ui/button";
 import {Checkbox} from "@/components/ui/checkbox";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Input} from "@/components/ui/input";
+import {useToast} from "@/components/ui/use-toast";
 
 export default function BuilderPageClient({
   players: initialPlayers,
@@ -17,11 +18,16 @@ export default function BuilderPageClient({
   onCreate: (formData: FormData) => void;
 }) {
   const [players, setPlayers] = useState<Player[]>(initialPlayers);
+  const {toast} = useToast();
 
   function handleAddPlayer(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
+
+    if (!formData.get("player")) {
+      return toast({title: "El campo nombre es requerido", duration: 1500});
+    }
 
     setPlayers((players) =>
       players.concat({name: formData.get("player") as string, score: 0, matches: 0}),
