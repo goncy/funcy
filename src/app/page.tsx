@@ -22,10 +22,20 @@ export default async function Home() {
             <TableCell>{date}</TableCell>
             <TableCell>{team1}</TableCell>
             <TableCell>{team2}</TableCell>
-            <TableCell className={cn({"font-bold text-green-500": goals1 > goals2})}>
+            <TableCell
+              className={cn({
+                "font-bold text-green-500": goals1 > goals2,
+                "text-yellow-500": goals1 === goals2,
+              })}
+            >
               {goals1}
             </TableCell>
-            <TableCell className={cn("text-right", {"font-bold text-green-500": goals2 > goals1})}>
+            <TableCell
+              className={cn("text-right", {
+                "font-bold text-green-500": goals2 > goals1,
+                "text-yellow-500": goals1 === goals2,
+              })}
+            >
               {goals2}
             </TableCell>
           </TableRow>
