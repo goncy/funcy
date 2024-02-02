@@ -4,7 +4,7 @@ const api = {
   match: {
     list: async (): Promise<Match[]> => {
       return fetch(
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vSM9tyX3AWG1X2ozkR9j86E8FykG0YBSTlVCdJtINaJUj3o5KYY30ifwDahGATJe1A08cXEulYJ8JxN/pub?output=tsv",
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vToRfe39N8ks4LksUCXdAKlaA6ppemcsrNPVlBW7w5Hrs7ZD1yZIqHchtHjd1Ch6NmKqDluaKznumzz/pub?output=tsv",
         {next: {tags: ["matches"]}},
       )
         .then((res) => res.text())
